@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 function Layout({ children }: PropsWithChildren) {
   return (
-    <div>
+    <div className="px-6">
       {children}
       <Footer />
     </div>

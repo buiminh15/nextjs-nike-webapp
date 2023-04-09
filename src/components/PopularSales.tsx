@@ -8,8 +8,8 @@ function PopularSales() {
   const { items, title } = popularsales;
   return (
     <div>
-      <h1>{title}</h1>
-      <div>
+      <h1 className="mb-6 text-3xl font-bold">{title}</h1>
+      <div className="flex flex-col gap-6">
         {items.map((item) => (
           <SaleItem
             key={item.id}
