@@ -5,8 +5,8 @@ import Footer from './Footer';
 
 function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="px-6">
-      {children}
+    <div className="min-h-screen">
+      <div className="px-6">{children}</div>
       <Footer />
     </div>
   );
