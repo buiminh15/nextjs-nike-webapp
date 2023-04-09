@@ -1,7 +1,15 @@
-import React from "react";
+import React from 'react';
+import type { PropsWithChildren } from 'react';
 
-function Layout() {
-  return <div>Layout</div>;
+import Footer from './Footer';
+
+function Layout({ children }: PropsWithChildren) {
+  return (
+    <div>
+      {children}
+      <Footer />
+    </div>
+  );
 }
 
 export default Layout;
