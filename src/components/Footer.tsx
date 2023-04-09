@@ -15,7 +15,10 @@ function Footer() {
             <h3 className="text-lg font-bold text-slate-200">{item.title}</h3>
             <ul className="mt-4 flex flex-col gap-1">
               {links[index].map((item) => (
-                <li className="text-sm font-semibold text-slate-200">
+                <li
+                  key={item.link}
+                  className="text-sm font-semibold text-slate-200"
+                >
                   {item.link}
                 </li>
               ))}
