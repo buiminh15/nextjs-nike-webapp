@@ -1,8 +1,8 @@
 import heroimg from '../assets/hero.png';
+import logoimg from '../assets/logo.png';
 import hightlightimg from '../assets/hightlightimg.png';
 import sneakershoe from '../assets/sneaker.png';
-// import clip from "../assets/video/clip.mp4";
-// const clip = require("../assets/video/clip.mp4");
+import clip from '../assets/video/clip.mp4';
 import vcover1 from '../assets/video/vcover1.png';
 import vcover2 from '../assets/video/vcover2.png';
 import vcover3 from '../assets/video/vcover3.png';
@@ -32,11 +32,11 @@ const heroapi = {
   subtitle: 'Adapt 2.0 Sneakers',
   img: heroimg,
   btntext: 'Explore Product',
-  // videos: [
-  //   { imgsrc: vcover1, clip: clip },
-  //   { imgsrc: vcover2, clip: clip },
-  //   { imgsrc: vcover3, clip: clip },
-  // ],
+  videos: [
+    { imgsrc: vcover1, clip },
+    { imgsrc: vcover2, clip },
+    { imgsrc: vcover3, clip },
+  ],
   sociallinks: [
     { icon: facebook },
     { icon: messenger },
@@ -44,6 +44,7 @@ const heroapi = {
     { icon: twitter },
     { icon: youtube },
   ],
+  logoImg: logoimg,
 };
 
 const popularsales = {
