@@ -1,4 +1,3 @@
-import React from 'react';
 import Image, { StaticImageData } from 'next/image';
 
 type HighLightsProps = {
@@ -8,6 +7,7 @@ type HighLightsProps = {
   text: string;
   url: string;
   img: StaticImageData;
+  // eslint-disable-next-line react/require-default-props
   isFeatured?: boolean;
 };
 

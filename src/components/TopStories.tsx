@@ -13,7 +13,7 @@ function TopStories() {
   const { title, news } = story;
   return (
     <div>
-      <h1>{title}</h1>
+      <h1 className="mb-6 text-4xl font-bold lg:text-3xl">{title}</h1>
       <Swiper
         breakpoints={{
           320: {
@@ -29,7 +29,6 @@ function TopStories() {
             slidesPerView: 4,
           },
         }}
-        // slidesPerView={4}
         spaceBetween={20}
         loop
         navigation
@@ -49,18 +48,6 @@ function TopStories() {
             />
           </SwiperSlide>
         ))}
-        {/* <div
-          onClick={() => swiper?.slidePrev()}
-          className="absolute left-5 top-1/2 z-10 cursor-pointer rounded-full p-2 transition duration-200 ease-in hover:bg-slate-100"
-        >
-          <ChevronLeftIcon className="h-8" />
-        </div>
-        <div
-          onClick={() => swiper?.slideNext()}
-          className="absolute right-5 top-1/2 z-10 cursor-pointer rounded-full  p-2 transition duration-200 ease-in hover:bg-slate-100"
-        >
-          <ChevronRightIcon className="h-8" />
-        </div> */}
       </Swiper>
     </div>
   );

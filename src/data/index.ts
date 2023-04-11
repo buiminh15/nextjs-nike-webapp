@@ -4,10 +4,13 @@ import hightlightimg from '../assets/hightlightimg.png';
 import instagram from '../assets/instagram.svg';
 import logoimg from '../assets/logo.png';
 import messenger from '../assets/messenger.svg';
-import psale2 from '../assets/nike-adapt-bb.png';
 import psale3 from '../assets/nike-adapt-bb-smart.png';
+import psale2 from '../assets/nike-adapt-bb.png';
 import psale1 from '../assets/nike-air-red.png';
 import product1 from '../assets/product1.png';
+import product10 from '../assets/product10.png';
+import product11 from '../assets/product11.png';
+import product12 from '../assets/product12.png';
 import product2 from '../assets/product2.png';
 import product3 from '../assets/product3.png';
 import product4 from '../assets/product4.png';
@@ -16,9 +19,6 @@ import product6 from '../assets/product6.png';
 import product7 from '../assets/product7.png';
 import product8 from '../assets/product8.png';
 import product9 from '../assets/product9.png';
-import product10 from '../assets/product10.png';
-import product11 from '../assets/product11.png';
-import product12 from '../assets/product12.png';
 import sneakershoe from '../assets/sneaker.png';
 import twitter from '../assets/twitter.svg';
 import clip from '../assets/video/clip.mp4';
@@ -33,16 +33,16 @@ const heroapi = {
   img: heroimg,
   btntext: 'Explore Product',
   videos: [
-    { imgsrc: vcover1, clip },
-    { imgsrc: vcover2, clip },
-    { imgsrc: vcover3, clip },
+    { id: '6434e63afc13ae5dca69e03e', imgsrc: vcover1, clip },
+    { id: '6434e63afc13ae5dca69e03f', imgsrc: vcover2, clip },
+    { id: '6434e63afc13ae5dca69e040', imgsrc: vcover3, clip },
   ],
   sociallinks: [
-    { icon: facebook },
-    { icon: messenger },
-    { icon: instagram },
-    { icon: twitter },
-    { icon: youtube },
+    { id: '6434e63afc13ae5dca69e041', icon: facebook },
+    { id: '6434e63afc13ae5dca69e042', icon: messenger },
+    { id: '6434e63afc13ae5dca69e043', icon: instagram },
+    { id: '6434e63afc13ae5dca69e044', icon: twitter },
+    { id: '6434e63afc13ae5dca69e045', icon: youtube },
   ],
   logoImg: logoimg,
 };

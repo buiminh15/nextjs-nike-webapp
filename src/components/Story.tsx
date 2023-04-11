@@ -1,8 +1,6 @@
-import React from 'react';
 import { ClockIcon } from '@heroicons/react/24/outline';
 import { HeartIcon, PencilIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
-import Link from 'next/link';
 
 type StoryProps = {
   title: string;
@@ -18,7 +16,13 @@ type StoryProps = {
 function Story({ time, title, btn, by, img, like, text, url }: StoryProps) {
   return (
     <div className="overflow-hidden rounded-lg border-2 shadow-md">
-      <Image src={img} alt="" width={500} height={300} />
+      <Image
+        src={img}
+        alt=""
+        width={500}
+        height={300}
+        className="overflow-hidden rounded-lg"
+      />
       <div className="px-6 py-2">
         <div className="flex items-center justify-between font-semibold">
           <div className="flex items-center gap-1">
