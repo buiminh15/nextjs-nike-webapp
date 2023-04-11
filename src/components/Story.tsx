@@ -1,7 +1,7 @@
-import { HeartIcon, PencilIcon } from '@heroicons/react/24/solid';
-import { ClockIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
 import React from 'react';
+import { ClockIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, PencilIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
 import Link from 'next/link';
 
 type StoryProps = {
@@ -37,7 +37,12 @@ function Story({ time, title, btn, by, img, like, text, url }: StoryProps) {
         <p className="mt-4 text-lg font-bold">{title}</p>
         <p className="line-clamp-3 text-sm">{text}</p>
         <div className="mt-6 cursor-pointer rounded-lg bg-black px-4 py-2 text-center">
-          <a href={url} className=" block text-slate-100" target="_blank">
+          <a
+            href={url}
+            className=" block text-slate-100"
+            target="_blank"
+            rel="noreferrer"
+          >
             {btn}
           </a>
         </div>

@@ -1,6 +1,5 @@
-import React from 'react';
 import type { PropsWithChildren } from 'react';
-
+import React from 'react';
 import Footer from './Footer';
 import Hero from './Hero';
 

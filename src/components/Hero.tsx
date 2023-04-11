@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/media-has-caption */
+import React from 'react';
 import { HeartIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
-import React from 'react';
-
 import { heroapi } from 'src/data';
 
 function Hero() {

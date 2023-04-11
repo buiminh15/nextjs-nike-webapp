@@ -1,5 +1,5 @@
-import Image, { StaticImageData } from 'next/image';
 import React from 'react';
+import Image, { StaticImageData } from 'next/image';
 
 type HighLightsProps = {
   heading: string;
@@ -41,7 +41,7 @@ function HighLights({
           </a>
         </div>
       </div>
-      <div className="xl:flex-1"></div>
+      <div className="xl:flex-1" />
       <div className="mt-10 rotate-6 transition duration-500 ease-in-out hover:-rotate-12 md:flex-1">
         <Image src={img} alt="" />
       </div>

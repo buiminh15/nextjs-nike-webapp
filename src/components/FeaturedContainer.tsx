@@ -6,7 +6,7 @@ function FeaturedContainer() {
   const { heading, title, text, btn, img, url } = sneaker;
   return (
     <HighLights
-      isFeatured={true}
+      isFeatured
       btn={btn}
       heading={heading}
       img={img}

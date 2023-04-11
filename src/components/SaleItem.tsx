@@ -1,6 +1,6 @@
-import Image, { StaticImageData } from 'next/image';
 import React from 'react';
-import { StarIcon, ShoppingBagIcon } from '@heroicons/react/24/solid';
+import { ShoppingBagIcon, StarIcon } from '@heroicons/react/24/solid';
+import Image, { StaticImageData } from 'next/image';
 
 type SaleItemProps = {
   imageUrl: StaticImageData;

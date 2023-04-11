@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { popularsales } from 'src/data';
-
 import SaleItem from './SaleItem';
 
 function PopularSales() {

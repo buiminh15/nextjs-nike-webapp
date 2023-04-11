@@ -1,9 +1,14 @@
-import { story } from 'src/data';
 import { Navigation } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { story } from 'src/data';
+
+import 'swiper/css/navigation';
+
 import Story from './Story';
+
+import 'swiper/css';
+
 function TopStories() {
   const { title, news } = story;
   return (
@@ -27,7 +32,7 @@ function TopStories() {
         // slidesPerView={4}
         spaceBetween={20}
         loop
-        navigation={true}
+        navigation
         modules={[Navigation]}
       >
         {news.map((item) => (

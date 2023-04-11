@@ -1,6 +1,6 @@
+import React from 'react';
 import { ShoppingBagIcon, StarIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
-import React from 'react';
 
 type RatedSaleItemProps = {
   title: string;
