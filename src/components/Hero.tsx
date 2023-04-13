@@ -1,13 +1,27 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/media-has-caption */
 import { HeartIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
+import { useContext } from 'react';
 
+import {
+  SettingContext,
+  SettingContextType,
+} from 'src/contexts/SettingContext';
 import { heroapi } from 'src/data';
 
 function Hero() {
+  const { setOpenMenu } = useContext<SettingContextType>(SettingContext);
+
   const { title, subtitle, img, btntext, sociallinks, logoImg, videos } =
     heroapi;
+
+  const handleOpenSidebarMenu = () => {
+    setOpenMenu(true);
+  };
+
   return (
     <section className="relative mb-12 h-[60vh] px-6 py-6 md:h-[70vh] md:px-10 lg:h-[80vh] lg:px-20">
       <div className="clip-path absolute inset-0 -z-20 bg-gradient-to-b from-blue-800 to-violet-300" />
@@ -18,11 +32,19 @@ function Hero() {
         <div className="flex gap-2 text-slate-100 lg:gap-4">
           <MagnifyingGlassIcon className="h-5 cursor-pointer duration-150 ease-in active:scale-110 lg:h-8" />
           <HeartIcon className="h-5 cursor-pointer transition duration-150 ease-in active:scale-110 lg:h-8" />
-          <ShoppingBagIcon className="h-5 cursor-pointer duration-150 ease-in active:scale-110 lg:h-8" />
+          <div
+            className="group relative transition duration-300 ease-in"
+            onClick={handleOpenSidebarMenu}
+          >
+            <ShoppingBagIcon className="h-5 cursor-pointer duration-150 ease-in group-active:scale-125 lg:h-8" />
+            <span className="absolute -bottom-3 left-1/2 grid aspect-square h-4 -translate-x-1/2 items-center justify-center rounded-full bg-slate-200 text-xs font-semibold text-black group-active:scale-125 lg:h-6">
+              0
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="mt-10 text-center text-slate-50">
+      <div className="relative z-10 mt-10 text-center text-slate-50">
         <p className="text-3xl font-extrabold">{title}</p>
         <p className="text-3xl font-extrabold">{subtitle}</p>
         <button
@@ -39,7 +61,7 @@ function Hero() {
             {videos.map((v) => (
               <li
                 key={`video-${v.id}`}
-                className="group relative aspect-square h-16 cursor-pointer overflow-hidden rounded-2xl shadow md:h-20 lg:h-24"
+                className="w-18 md:w-22 lg-w-26 group relative h-16 cursor-pointer overflow-hidden rounded-2xl shadow md:h-20 lg:h-24"
               >
                 <Image
                   src={v.imgsrc}
@@ -70,7 +92,7 @@ function Hero() {
           </ul>
         </div>
 
-        <div className="absolute left-1/2 top-0 -z-10 w-3/4 -translate-x-1/2 -rotate-[35deg] transition duration-300 ease-in md:w-1/2 lg:w-1/3 xl:w-2/5">
+        <div className="absolute left-1/2 top-0 -z-10 w-72 -translate-x-1/2 -rotate-[35deg]  transition duration-300 ease-in md:w-[440px] lg:w-[510px] xl:w-2/5">
           <Image src={img} alt="" priority />
         </div>
       </div>

@@ -35,7 +35,9 @@ function HighLights({
         <div className="mt-4">
           <a
             href={url}
+            target="_blank"
             className=" rounded bg-black px-6 py-2 text-slate-100 md:text-lg"
+            rel="noreferrer"
           >
             {btn}
           </a>
