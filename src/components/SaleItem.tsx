@@ -1,6 +1,11 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { ShoppingBagIcon, StarIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
+import React from 'react';
+import toast from 'react-hot-toast';
+
+import { getProducts, saveProduct } from 'src/utils/storage';
 
 type SaleItemProps = {
   imageUrl: StaticImageData;
@@ -11,6 +16,7 @@ type SaleItemProps = {
   price: string;
   color: string;
   shadow: string;
+  productId: string;
 };
 
 function SaleItem({
@@ -22,7 +28,20 @@ function SaleItem({
   shadow,
   text,
   title,
+  productId,
 }: SaleItemProps) {
+  const products = getProducts();
+  const handleAddProductToCart = () => {
+    const addedProduct = {
+      id: productId,
+      text,
+      title,
+      price,
+    };
+    saveProduct(addedProduct);
+    toast.success(`${text} added to cart`);
+  };
+
   return (
     <div
       className={`flex items-center justify-between rounded-lg 
@@ -48,7 +67,10 @@ function SaleItem({
           </div>
         </div>
         <div className="mt-2 flex items-center gap-5">
-          <span className="cursor-pointer rounded-md bg-slate-100 p-1">
+          <span
+            className="cursor-pointer rounded-md bg-slate-100 p-1"
+            onClick={handleAddProductToCart}
+          >
             <ShoppingBagIcon className="h-6 " />
           </span>
           <button className="rounded-md bg-slate-100 px-2 py-1" type="button">
@@ -57,11 +79,11 @@ function SaleItem({
         </div>
       </div>
 
-      <div className=" h-fit w-52 -rotate-[40deg] transition duration-500 ease-in hover:-rotate-12">
+      <div className=" h-fit w-60 -rotate-[40deg] transition duration-500 ease-in hover:-rotate-12 lg:w-72">
         <Image src={imageUrl} alt="" className="object-cover" />
       </div>
     </div>
   );
 }
 
-export default SaleItem;
+export default React.memo(SaleItem);

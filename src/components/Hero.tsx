@@ -1,19 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/media-has-caption */
 import { HeartIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
-import { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import {
   SettingContext,
   SettingContextType,
 } from 'src/contexts/SettingContext';
 import { heroapi } from 'src/data';
+import { Product, getProducts } from 'src/utils/storage';
 
 function Hero() {
   const { setOpenMenu } = useContext<SettingContextType>(SettingContext);
+  const [productsList, setProductsList] = useState<Product[] | undefined>();
+  const products = getProducts();
+
+  useEffect(() => {
+    setProductsList(getProducts());
+  }, [JSON.stringify(products)]);
 
   const { title, subtitle, img, btntext, sociallinks, logoImg, videos } =
     heroapi;
@@ -21,7 +29,6 @@ function Hero() {
   const handleOpenSidebarMenu = () => {
     setOpenMenu(true);
   };
-
   return (
     <section className="relative mb-12 h-[60vh] px-6 py-6 md:h-[70vh] md:px-10 lg:h-[80vh] lg:px-20">
       <div className="clip-path absolute inset-0 -z-20 bg-gradient-to-b from-blue-800 to-violet-300" />
@@ -37,8 +44,8 @@ function Hero() {
             onClick={handleOpenSidebarMenu}
           >
             <ShoppingBagIcon className="h-5 cursor-pointer duration-150 ease-in group-active:scale-125 lg:h-8" />
-            <span className="absolute -bottom-3 left-1/2 grid aspect-square h-4 -translate-x-1/2 items-center justify-center rounded-full bg-slate-200 text-xs font-semibold text-black group-active:scale-125 lg:h-6">
-              0
+            <span className="absolute -bottom-3 left-1/2 grid aspect-square h-4 -translate-x-1/2 items-center justify-center rounded-full bg-slate-200 text-xs font-semibold font-semibold text-black group-active:scale-125 lg:h-6">
+              {productsList?.length ? productsList.length : '0'}
             </span>
           </div>
         </div>
@@ -100,4 +107,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default React.memo(Hero);

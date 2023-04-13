@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import { Toaster } from 'react-hot-toast';
 
 import Layout from 'src/components/Layout';
 import { SettingProvider } from 'src/contexts/SettingContext';
@@ -10,6 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <SettingProvider>
       <Layout>
         <Component {...pageProps} />
+        <Toaster />
       </Layout>
     </SettingProvider>
   );

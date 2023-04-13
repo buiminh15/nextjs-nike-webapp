@@ -19,6 +19,7 @@ function PopularSales() {
             shadow={item.shadow}
             text={item.text}
             title={item.title}
+            productId={item.id}
           />
         ))}
       </div>

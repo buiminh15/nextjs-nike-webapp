@@ -3,8 +3,6 @@ import {
   ArrowLeftOnRectangleIcon,
 } from '@heroicons/react/24/outline';
 
-import { getProducts } from 'src/utils/storage';
-
 type SidebarMenuProps = {
   openSidebarMenu: boolean;
   handleCloseSidebarMenu: () => void;
@@ -14,8 +12,6 @@ function SidebarMenu({
   openSidebarMenu,
   handleCloseSidebarMenu,
 }: SidebarMenuProps) {
-  const products = getProducts();
-
   return (
     <div
       className={`absolute inset-0 z-40 min-h-screen w-full overflow-y-hidden bg-slate-400/60 transition duration-100 ease-out ${
