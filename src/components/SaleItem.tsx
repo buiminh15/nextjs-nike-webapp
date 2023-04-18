@@ -1,11 +1,14 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { ShoppingBagIcon, StarIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 
-import { getProducts, saveProduct } from 'src/utils/storage';
+import { ProductContext } from 'src/contexts/ProductContext';
+import { Product, getProducts, saveProduct } from 'src/utils/storage';
 
 type SaleItemProps = {
   imageUrl: StaticImageData;
@@ -30,15 +33,41 @@ function SaleItem({
   title,
   productId,
 }: SaleItemProps) {
-  const products = getProducts();
+  const { products, setProducts } = useContext(ProductContext);
+  const productsLocal = getProducts();
   const handleAddProductToCart = () => {
     const addedProduct = {
       id: productId,
       text,
       title,
       price,
+      color,
+      shadow,
+      imageUrl,
+      quantity: 1,
     };
-    saveProduct(addedProduct);
+    if (products.length) {
+      const countDuplicates = products.reduce((acc: Product[], curr) => {
+        const existingItem = acc.find((item) => item.id === curr.id);
+        if (existingItem) {
+          existingItem.quantity++;
+          acc.push(existingItem);
+        } else {
+          const newObj = { ...curr, quantity: 1 };
+          acc.push(newObj);
+        }
+        return acc;
+      }, []);
+
+      setProducts(countDuplicates);
+      saveProduct(countDuplicates);
+    }
+
+    if (!products.length) {
+      saveProduct([addedProduct]);
+      setProducts([addedProduct]);
+    }
+
     toast.success(`${text} added to cart`);
   };
 

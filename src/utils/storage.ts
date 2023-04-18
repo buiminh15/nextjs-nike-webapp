@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 import { isWindow } from './common';
 
 const LOCAL_VARS = {
@@ -9,6 +11,10 @@ export type Product = {
   title: string;
   text: string;
   price: string;
+  color: string;
+  shadow: string;
+  quantity: number;
+  imageUrl: StaticImageData;
 };
 
 const getProducts = (): Product[] => {
@@ -22,13 +28,9 @@ const getProducts = (): Product[] => {
   return [];
 };
 
-const saveProduct = (product: Product): void => {
+const saveProduct = (products: Product[]): void => {
   if (isWindow()) {
-    const products = getProducts();
-    if (products) {
-      const productsList = [...products, product];
-      localStorage.setItem(LOCAL_VARS.PRODUCTS, JSON.stringify(productsList));
-    }
+    localStorage.setItem(LOCAL_VARS.PRODUCTS, JSON.stringify(products));
   }
 };
 
@@ -42,4 +44,10 @@ const removeProduct = (id: string): void => {
   }
 };
 
-export { getProducts, saveProduct, removeProduct, LOCAL_VARS };
+const removeProducts = (): void => {
+  if (isWindow()) {
+    localStorage.removeItem(LOCAL_VARS.PRODUCTS);
+  }
+};
+
+export { getProducts, saveProduct, removeProduct, LOCAL_VARS, removeProducts };
