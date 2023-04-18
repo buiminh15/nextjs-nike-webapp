@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
   ArchiveBoxXMarkIcon,
@@ -34,6 +36,12 @@ function SidebarMenu({
     setProducts([]);
   };
 
+  const handleTotalOfProducts = () =>
+    products.reduce(
+      (total, curr) => (total += Number(curr.price) * curr.quantity),
+      0,
+    );
+
   return (
     <div
       className={`fixed inset-0 z-40 h-screen w-full overflow-y-hidden bg-slate-400/60 transition duration-100 ease-out ${
@@ -61,16 +69,18 @@ function SidebarMenu({
             onClick={handleRemoveAllProducts}
           />
         </div>
-        <div className="scrollbar-hide flex flex-[4] flex-col gap-6 overflow-y-scroll scroll-smooth bg-slate-100 px-6 py-3">
+        <div className="scrollbar-hide flex flex-[4] flex-col gap-6 overflow-y-scroll scroll-smooth bg-slate-100 px-6 pb-36 pt-3">
           {products.length ? (
             products.map((product) => (
               <SidebarMenuItem
+                productId={product.id}
                 image={product.imageUrl}
                 title={product.title}
                 text={product.text}
                 price={product.price}
                 shadow={product.shadow}
                 color={product.color}
+                quantity={product.quantity}
                 key={product.id}
               />
             ))
@@ -100,7 +110,7 @@ function SidebarMenu({
           <div className="flex items-center justify-between">
             <span className="font-bold">SUBTOTAL</span>
             <span className="rounded bg-black px-2 text-sm text-white">
-              $200
+              ${handleTotalOfProducts()}
             </span>
           </div>
           <p className="text-center font-medium">

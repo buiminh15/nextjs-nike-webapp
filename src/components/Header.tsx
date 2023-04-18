@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { HeartIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
@@ -18,7 +19,6 @@ import { heroapi } from 'src/data';
 function Header() {
   const { setOpenMenu } = useContext<SettingContextType>(SettingContext);
   const { products } = useContext<ProductContextType>(ProductContext);
-
   const { logoImg } = heroapi;
 
   const handleOpenSidebarMenu = () => {

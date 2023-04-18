@@ -19,6 +19,7 @@ function TopRatedSales() {
             rating={item.rating}
             shadow={item.shadow}
             text={item.text}
+            productId={item.id}
           />
         ))}
       </div>

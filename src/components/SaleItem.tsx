@@ -5,10 +5,8 @@
 import { ShoppingBagIcon, StarIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
 import React, { useContext } from 'react';
-import toast from 'react-hot-toast';
 
 import { ProductContext } from 'src/contexts/ProductContext';
-import { Product, getProducts, saveProduct } from 'src/utils/storage';
 
 type SaleItemProps = {
   imageUrl: StaticImageData;
@@ -33,8 +31,7 @@ function SaleItem({
   title,
   productId,
 }: SaleItemProps) {
-  const { products, setProducts } = useContext(ProductContext);
-  const productsLocal = getProducts();
+  const { addProductToCart } = useContext(ProductContext);
   const handleAddProductToCart = () => {
     const addedProduct = {
       id: productId,
@@ -44,31 +41,8 @@ function SaleItem({
       color,
       shadow,
       imageUrl,
-      quantity: 1,
     };
-    if (products.length) {
-      const countDuplicates = products.reduce((acc: Product[], curr) => {
-        const existingItem = acc.find((item) => item.id === curr.id);
-        if (existingItem) {
-          existingItem.quantity++;
-          acc.push(existingItem);
-        } else {
-          const newObj = { ...curr, quantity: 1 };
-          acc.push(newObj);
-        }
-        return acc;
-      }, []);
-
-      setProducts(countDuplicates);
-      saveProduct(countDuplicates);
-    }
-
-    if (!products.length) {
-      saveProduct([addedProduct]);
-      setProducts([addedProduct]);
-    }
-
-    toast.success(`${text} added to cart`);
+    addProductToCart(addedProduct);
   };
 
   return (

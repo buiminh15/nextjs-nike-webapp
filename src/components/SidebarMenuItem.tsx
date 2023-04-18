@@ -1,5 +1,9 @@
-import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/solid';
+import { TrashIcon } from '@heroicons/react/24/outline';
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
+import { useContext } from 'react';
+
+import { ProductContext } from 'src/contexts/ProductContext';
 
 type SidebarMenuItemProps = {
   image: StaticImageData;
@@ -8,6 +12,8 @@ type SidebarMenuItemProps = {
   price: string;
   color: string;
   shadow: string;
+  productId: string;
+  quantity: number;
 };
 
 function SidebarMenuItem({
@@ -17,7 +23,23 @@ function SidebarMenuItem({
   price,
   color,
   shadow,
+  quantity,
+  productId,
 }: SidebarMenuItemProps) {
+  const { removeProduct, setIncreaseItemQTY, setDecreaseItemQTY } =
+    useContext(ProductContext);
+
+  const handleRemoveProduct = () => {
+    removeProduct(productId);
+  };
+
+  const handleIncreaseItem = () => {
+    setIncreaseItemQTY(productId);
+  };
+  const handleDecreaseItem = () => {
+    setDecreaseItemQTY(productId);
+  };
+
   return (
     <div className="flex gap-3">
       <div
@@ -35,20 +57,25 @@ function SidebarMenuItem({
         </div>
         <div className="flex gap-5">
           <span className="grid cursor-pointer items-center rounded bg-slate-900 px-1 text-white active:scale-90">
-            <MinusIcon className="w-5 text-white" />
+            <MinusIcon
+              className="w-5 text-white"
+              onClick={handleDecreaseItem}
+            />
           </span>
           <span className="grid select-none items-center rounded bg-slate-900 px-3 text-white">
-            0
+            {quantity}
           </span>
           <span className="grid cursor-pointer items-center rounded bg-slate-900 px-1 text-white active:scale-90">
-            <PlusIcon className="h-7 w-5" />
+            <PlusIcon className="h-7 w-5" onClick={handleIncreaseItem} />
           </span>
         </div>
       </div>
       <div className="flex flex-1 flex-col items-center justify-between">
-        <span className="select-none text-lg font-bold">$200</span>
+        <span className="select-none text-lg font-bold">
+          ${Number(price) * quantity}
+        </span>
         <span className="cursor-pointer rounded bg-slate-900 p-1 active:scale-90">
-          <TrashIcon className="h-5 text-white" />
+          <TrashIcon className="h-5 text-white" onClick={handleRemoveProduct} />
         </span>
       </div>
     </div>

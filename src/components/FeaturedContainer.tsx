@@ -1,5 +1,5 @@
-import React from 'react';
 import { sneaker } from 'src/data';
+
 import HighLights from './HighLights';
 
 function FeaturedContainer() {

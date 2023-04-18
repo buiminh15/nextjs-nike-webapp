@@ -1,6 +1,10 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { ShoppingBagIcon, StarIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
+import { useContext } from 'react';
+
+import { ProductContext } from 'src/contexts/ProductContext';
 
 type RatedSaleItemProps = {
   title: string;
@@ -11,6 +15,7 @@ type RatedSaleItemProps = {
   price: string;
   color: string;
   shadow: string;
+  productId: string;
 };
 
 function RatedSaleItem({
@@ -22,7 +27,22 @@ function RatedSaleItem({
   rating,
   shadow,
   text,
+  productId,
 }: RatedSaleItemProps) {
+  const { addProductToCart } = useContext(ProductContext);
+
+  const handleAddProductToCart = () => {
+    const addedProduct = {
+      id: productId,
+      text,
+      title,
+      price,
+      color,
+      shadow,
+      imageUrl: img,
+    };
+    addProductToCart(addedProduct);
+  };
   return (
     <div
       className={` rounded-lg  bg-gradient-to-b py-4 text-center  transition
@@ -42,7 +62,10 @@ function RatedSaleItem({
         </div>
       </div>
       <div className="mt-2 inline-flex items-center gap-5">
-        <span className="cursor-pointer rounded-md bg-slate-100 p-1">
+        <span
+          className="cursor-pointer rounded-md bg-slate-100 p-1"
+          onClick={handleAddProductToCart}
+        >
           <ShoppingBagIcon className="h-6 " />
         </span>
         <button className="rounded-md bg-slate-100 px-2 py-1" type="button">
