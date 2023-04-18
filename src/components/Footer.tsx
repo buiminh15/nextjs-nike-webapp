@@ -1,4 +1,3 @@
-import React from 'react';
 import { footerAPI } from 'src/data';
 
 function Footer() {
@@ -11,15 +10,15 @@ function Footer() {
     >
       <div className="grid grid-cols-3 md:mx-auto md:w-2/3">
         {titles.map((item, index) => (
-          <div key={`footer-col-${index}`}>
+          <div key={`footer-col-${item.title}`}>
             <h3 className="text-lg font-bold text-slate-200">{item.title}</h3>
             <ul className="mt-4 flex flex-col gap-1">
-              {links[index].map((item) => (
+              {links[index].map((i) => (
                 <li
-                  key={item.link}
+                  key={i.link}
                   className="text-sm font-semibold text-slate-200"
                 >
-                  {item.link}
+                  {i.link}
                 </li>
               ))}
             </ul>

@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { highlight } from 'src/data';
+
 import HighLights from './HighLights';
 
 function HighLightsContainer() {
